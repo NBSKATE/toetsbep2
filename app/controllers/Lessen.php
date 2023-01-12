@@ -2,35 +2,35 @@
 
 class Lessen extends Controller
 {
-    private $lesModel;
+    private $MankementModel;
 
     public function __construct()
     {
         // We maken een object van de model class en stoppen dit in een $lesModel
-        $this->lesModel = $this->model('Les');
+        $this->MankementModel = $this->model('Les');
     }
 
     public function index()
     {
-        $result = $this->lesModel->getLessen();
+        $result = $this->MankementModel->getLessen();
 
         var_dump($result);
 
         $rows = "";
 
-        foreach ($result as $lesInfo) {
+        foreach ($result as $MankInfo) {
             $dateTimeObj = new DateTimeImmutable(
-                $lesInfo->DatumTijd,
+                $MankInfo->DatumTijd,
                 new DateTimeZone('Europe/Amsterdam')
             );
             // var_dump($dateTimeObj);
             $rows .= "<tr>
                         <td>{$dateTimeObj->format('d-m-Y')}</td>
                         <td>{$dateTimeObj->format('H:i')}</td>
-                        <td>{$lesInfo->LENA}</td>
+                        <td>{$MankInfo->LENA}</td>
                         <td></td>
                         <td>
-                            <a href='" . URLROOT . "/lessen/topiclesson/{$lesInfo->LEID}'>
+                            <a href='" . URLROOT . "/lessen/topiclesson/{$MankInfo->LEID}'>
                             <img src='" . URLROOT . "/img/b_browse.png' alt='table picture'>
                             </a>
                         </td>
@@ -38,7 +38,7 @@ class Lessen extends Controller
         }
 
         $data = [
-            'title' => 'Overzicht lessen',
+            'title' => 'Overzicht Mankementen',
             'rows' => $rows,
             'instructorName' => $result[0]->INNA
         ];
@@ -48,7 +48,7 @@ class Lessen extends Controller
     public function topicLesson($id = NULL)
     {
 
-        $result = $this->lesModel->getTopics($id);
+        $result = $this->MankementModel->getTopics($id);
         var_dump($result);
 
         if ($result) {
@@ -69,7 +69,7 @@ class Lessen extends Controller
         }
 
         $data = [
-            'title' => 'Onderwerpen Les',
+            'title' => 'Onderwerpen Mankement',
             'rows' => $rows,
             'date' => $date,
             'time' => $time,
@@ -84,7 +84,7 @@ class Lessen extends Controller
 
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            $result = $this->lesModel->addTopic($_POST);
+            $result = $this->MankementModel->addTopic($_POST);
 
             $data = [
                 'title' => 'test'

@@ -1,7 +1,6 @@
 <h3><?= $data['title']; ?></h3>
 <h4><? echo 'Naam instructeur: ' . $data['instructorName']; ?></h4>
 
-
 <table border="1">
     <thead>
         <th>Datum</th>

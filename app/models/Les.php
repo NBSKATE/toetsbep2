@@ -17,17 +17,17 @@ class Les
 
     public function getLessen()
     {
-        $this->db->query("SELECT Les.DatumTijd
-                                ,Les.Id as LEID
-                                ,Leerling.Id
-                                ,Leerling.Naam as LENA
-                                ,Instructeur.Naam as INNA
-                          FROM Les
-                          INNER JOIN Leerling
-                          ON Leerling.Id = Les.LeerlingId
-                          INNER JOIN Instructeur
-                          ON Instructeur.Id = Les.InstructeurId
-                          WHERE Les.InstructeurId = :Id");
+        $this->db->query("SELECT Mankement.Datum
+                                ,Mankement.Id as LEID
+                                ,Auto.Id
+                                ,Mankement.Mankement as LENA
+                                ,Instructeur1.Naam as INNA
+                          FROM Mankement
+                          INNER JOIN Auto
+                          ON Auto.Id = Mankement.AutoId
+                          INNER JOIN Instructeur1
+                          ON Instructeur1.Id = Auto.InstructeurId
+                          WHERE Mankement.InstructeurId = :Id");
         $this->db->bind(':Id', 2, PDO::PARAM_INT);
         return $this->db->resultSet();
     }

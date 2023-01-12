@@ -15,6 +15,23 @@ class Les
         $this->db = new Database();
     }
 
+    // public function getLessen()
+    // {
+    //     $this->db->query("SELECT Mankement.Datum
+    //                             ,Mankement.Id as LEID
+    //                             ,Auto.Id
+    //                             ,Mankement.Mankement as LENA
+    //                             ,Instructeur1.Naam as INNA
+    //                       FROM Mankement
+    //                       INNER JOIN Auto
+    //                       ON Auto.Id = Mankement.AutoId
+    //                       INNER JOIN Instructeur1
+    //                       ON Instructeur1.Id = Auto.InstructeurId
+    //                       WHERE Mankement.InstructeurId = :Id");
+    //     $this->db->bind(':Id', 2, PDO::PARAM_INT);
+    //     return $this->db->resultSet();
+    // }
+
     public function getLessen()
     {
         $this->db->query("SELECT Mankement.Datum
@@ -22,12 +39,12 @@ class Les
                                 ,Auto.Id
                                 ,Mankement.Mankement as LENA
                                 ,Instructeur1.Naam as INNA
-                          FROM Mankement
+                          FROM Instructeur1
                           INNER JOIN Auto
+                          ON Auto.InstructeurId = Instructeur1.Id
+                          INNER JOIN Mankement
                           ON Auto.Id = Mankement.AutoId
-                          INNER JOIN Instructeur1
-                          ON Instructeur1.Id = Auto.InstructeurId
-                          WHERE Mankement.InstructeurId = :Id");
+                          WHERE Instructeur1.Id = :Id");
         $this->db->bind(':Id', 2, PDO::PARAM_INT);
         return $this->db->resultSet();
     }

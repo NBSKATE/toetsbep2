@@ -20,13 +20,12 @@ class Lessen extends Controller
 
         foreach ($result as $MankInfo) {
             $dateTimeObj = new DateTimeImmutable(
-                $MankInfo->DatumTijd,
+                $MankInfo->Datum,
                 new DateTimeZone('Europe/Amsterdam')
             );
             // var_dump($dateTimeObj);
             $rows .= "<tr>
                         <td>{$dateTimeObj->format('d-m-Y')}</td>
-                        <td>{$dateTimeObj->format('H:i')}</td>
                         <td>{$MankInfo->LENA}</td>
                         <td></td>
                         <td>

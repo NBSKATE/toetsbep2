@@ -1,5 +1,8 @@
 <h3><?= $data['title']; ?></h3>
-<h4><? echo 'Naam instructeur: ' . $data['instructorName']; ?></h4>
+<h4><?= 'Naam instructeur: ' . $data['instructorName']; ?></h4>
+<h4><?= 'Email instructeur: ' . $data['Email']; ?></h4>
+<h4><?= 'Kenteken Auto: ' . $data['kenteken']; ?></h4>
+
 
 <table border="1">
     <thead>

@@ -39,6 +39,8 @@ class Les
                                 ,Auto.Id
                                 ,Mankement.Mankement as LENA
                                 ,Instructeur1.Naam as INNA
+                                ,Instructeur1.Email as MAIL
+                                ,Auto.Kenteken as KENT
                           FROM Instructeur1
                           INNER JOIN Auto
                           ON Auto.InstructeurId = Instructeur1.Id

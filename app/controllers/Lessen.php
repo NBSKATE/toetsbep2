@@ -39,7 +39,10 @@ class Lessen extends Controller
         $data = [
             'title' => 'Overzicht Mankementen',
             'rows' => $rows,
-            'instructorName' => $result[0]->INNA
+            'instructorName' => $result[0]->INNA,
+            'Email' => $result[0]->MAIL,
+            'kenteken' => $result[0]->KENT
+
         ];
         $this->view('lessen/index', $data);
     }
